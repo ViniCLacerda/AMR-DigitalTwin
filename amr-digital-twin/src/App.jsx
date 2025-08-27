@@ -1,11 +1,11 @@
 import React from 'react';
-import DashboardPage from './pages/DashboardPage';
+import MapPage from './pages/MapPage';
 import './App.css'; 
 
 function App() {
   return (
     <div className="App">
-      <DashboardPage />
+      <MapPage />
     </div>
   );
 }
