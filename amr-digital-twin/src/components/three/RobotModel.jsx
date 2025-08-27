@@ -1,8 +1,18 @@
 import React from 'react';
 import { useGLTF } from '@react-three/drei';
 
-export function RobotModel({ modelPath, position, scale }) {
-  const { scene } = useGLTF(modelPath);
+export function RobotModel({ modelPath, position, scale, debug = false }) {
+  if (debug) {
+    return (
+      <mesh position={position} scale={scale}>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="red" />
+        <axesHelper args={[2]} />
+      </mesh>
+    );
+  }
 
-  return <primitive object={scene} position={position} scale={scale} />;
+  const { scene } = useGLTF(modelPath);
+  
+  return <primitive object={scene.clone()} position={position} scale={scale} />;
 }

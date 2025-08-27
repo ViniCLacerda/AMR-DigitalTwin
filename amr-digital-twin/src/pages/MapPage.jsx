@@ -16,7 +16,8 @@ const MapPage = () => {
           <RobotModel 
             modelPath="/robot.glb"
             position={robotPosition}
-            scale={1000}
+            scale={1}
+            debug={true}
           />
         </Scene>
       </Box>
