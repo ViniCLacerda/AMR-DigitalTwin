@@ -19,13 +19,14 @@ const MapPage = () => {
             modelPath="/tractor.glb"
             position={robotPosition}
             scale={0.02}
+            yaw={0}
           />
           <PointCloud 
             filePath="/test.pcd"
             position={[60, 0, 37]}
             scale={1.5}
-            pointSize={0.2}
-            color="#0864ac"
+            pointSize={0.05}
+            color="#141414"
             pitch={-90} 
             yaw={0}
             roll={55}
