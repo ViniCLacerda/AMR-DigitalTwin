@@ -16,7 +16,6 @@ export function PointCloud({
   const loadedPoints = useLoader(PCDLoader, filePath);
   const clonedGeometry = useMemo(() => loadedPoints.geometry.clone(), [loadedPoints]);
 
-  // Convert degrees to radians for Three.js
   const rotationInRadians = [
     pitch * (Math.PI / 180),
     yaw * (Math.PI / 180),
