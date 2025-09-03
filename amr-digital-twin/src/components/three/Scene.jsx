@@ -1,4 +1,3 @@
-// src/components/three/Scene.jsx
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Grid } from '@react-three/drei';

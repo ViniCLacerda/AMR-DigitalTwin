@@ -19,15 +19,16 @@ const MapPage = () => {
             modelPath="/tractor.glb"
             position={robotPosition}
             scale={0.02}
-            debug={false}
           />
           <PointCloud 
-            filePath="/lidar.pcd"
-            position={[60, 0, 0]}
-            scale={50}
-            pointSize={0.5}
-            color="#888888"
-            debug={false}
+            filePath="/test.pcd"
+            position={[60, 0, 37]}
+            scale={1.5}
+            pointSize={0.2}
+            color="#0864ac"
+            pitch={-90} 
+            yaw={0}
+            roll={55}
           />
         </Scene>
       </Box>

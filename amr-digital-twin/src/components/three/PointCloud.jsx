@@ -1,38 +1,35 @@
-// src/components/three/PointCloud.jsx
 import React, { useMemo } from 'react';
 import { useLoader } from '@react-three/fiber';
 import { PCDLoader } from 'three/examples/jsm/loaders/PCDLoader';
 import * as THREE from 'three';
 
-export function PointCloud({ filePath, position, scale, color, pointSize, debug = false }) {
-
-  const debugGeometry = useMemo(() => {
-    const points = [];
-    for (let i = 0; i < 100; i++) {
-      points.push(new THREE.Vector3(
-        (Math.random() - 0.5) * 10,
-        (Math.random() - 0.5) * 10,
-        (Math.random() - 0.5) * 10
-      ));
-    }
-    return new THREE.BufferGeometry().setFromPoints(points);
-  }, []);
-
+export function PointCloud({ 
+  filePath, 
+  position, 
+  scale, 
+  color, 
+  pointSize, 
+  pitch = 0, 
+  yaw = 0, 
+  roll = 0 
+}) {
   const loadedPoints = useLoader(PCDLoader, filePath);
-
   const clonedGeometry = useMemo(() => loadedPoints.geometry.clone(), [loadedPoints]);
 
-
-  if (debug) {
-    return (
-      <points position={position} scale={scale} geometry={debugGeometry}>
-        <pointsMaterial color="red" size={0.5} />
-      </points>
-    );
-  }
+  // Convert degrees to radians for Three.js
+  const rotationInRadians = [
+    pitch * (Math.PI / 180),
+    yaw * (Math.PI / 180),
+    roll * (Math.PI / 180)
+  ];
 
   return (
-    <points position={position} scale={scale} geometry={clonedGeometry}>
+    <points 
+      position={position} 
+      scale={scale} 
+      rotation={rotationInRadians}
+      geometry={clonedGeometry}
+    >
       <pointsMaterial color={color} size={pointSize} />
     </points>
   );
